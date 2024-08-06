@@ -5,7 +5,7 @@ class Room
 {
 private:
 	int roomNumber;
-	int NumberSeats;
+	int numberSeats;
 	double seatPrice;
 
 public:
