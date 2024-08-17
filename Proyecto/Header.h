@@ -1,6 +1,9 @@
 #ifndef Header_h
 #define Header_h
 
-std::string menu();
-std::string file();
+void mainMenu();
+void mainMenuOption(std::string* newMenuOption);
+void executeOption(std::string newMenuOption);
+std::string file(bool* newIsMenuOn);
+
 #endif 

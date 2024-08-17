@@ -100,48 +100,73 @@ double Room::getSeatPrice()
 	return this->seatPrice;
 }
 
-std::string menu()
+void mainMenuOption(std::string* newMenuOption)
 {
-	std::string mainMenuOption;
+	std::cin >> *newMenuOption;
 
-	std::cout << "Ingrese una opcion:\n\n";
-	std::cout << "1: Archivo\n";
-	std::cout << "2: Mantenimiento\n";
-	std::cout << "3: Reserva\n";
-	std::cout << "4: Venta\n";
-	std::cout << "\nOpcion: ";
-	std::cin >> mainMenuOption;
-
-	bool isValidOption = (mainMenuOption == "1") || (mainMenuOption == "2") ||
-		(mainMenuOption == "3") || (mainMenuOption == "4");
+	bool isValidOption = (*newMenuOption == "1") || (*newMenuOption == "2") ||
+		(*newMenuOption == "3") || (*newMenuOption == "4");
 
 	while (isValidOption == false)
 	{
 		std::cout << "\nIngrese una opcion valida: ";
-		std::cin >> mainMenuOption;
-		isValidOption = (mainMenuOption == "1") || (mainMenuOption == "2") ||
-			(mainMenuOption == "3") || (mainMenuOption == "4");
+		std::cin >> *newMenuOption;
+		isValidOption = (*newMenuOption == "1") || (*newMenuOption == "2") ||
+			(*newMenuOption == "3") || (*newMenuOption == "4");
 	}
-	return mainMenuOption;
 }
-std::string file()
+
+std::string file(bool* newIsMenuOn)
 {
-	int fileOption;
+	std::string fileOption;
 	std::cout << "\n\nArchivo:\n";
 	std::cout << "1: Acerca de\n";
 	std::cout << "2: Salir\n";
 	std::cout << "\nOpcion: ";
 	std::cin >> fileOption;
-	
-	bool isValidOption = (fileOption > 0 && fileOption < 3);
-	if (fileOption == 1 && isValidOption == true)
+
+	bool isValidOption = (fileOption == "1") || (fileOption == "2");
+
+	if ((fileOption == "1") && (isValidOption == true))
 	{
 		return "\n\n***Cristopher Moreno Umana***\n\n";
 	}
-	else if (fileOption == 2 && isValidOption == true)
+	else if ((fileOption == "2") && (isValidOption == true))
 	{
 		system("cls");
+		*newIsMenuOn = false;
 		return "Gracias por preferir nuestros servicios =)\n\n";
 	}
-	return "\n\nOpcion invalida";
+
+	std::cout << isValidOption;
+	return "\n\nOpcion invalida\n\n";
 }
+
+
+void executeOption(std::string newMenuOption)
+{
+
+}
+
+void mainMenu()
+{
+	bool isMenuOn = true;
+	std::string menuOption;
+	while (isMenuOn == true)
+	{
+		std::cout << "Ingrese una opcion:\n\n";
+		std::cout << "1: Archivo\n";
+		std::cout << "2: Mantenimiento\n";
+		std::cout << "3: Reserva\n";
+		std::cout << "4: Venta\n";
+		std::cout << "\nOpcion: ";
+		mainMenuOption(&menuOption);
+		executeOption(menuOption);
+		if (menuOption == "1")
+		{
+			std::cout << file(&isMenuOn);
+		}
+	}
+}
+
+
