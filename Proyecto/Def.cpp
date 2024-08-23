@@ -1,5 +1,7 @@
 #include "Movie.h"
 #include "Room.h"
+#include "Schedule.h"
+#include "Header.h"
 
 void mainMenuOption(std::string* newMenuOption)
 {
@@ -20,7 +22,7 @@ void mainMenuOption(std::string* newMenuOption)
 std::string file(bool* newIsMenuOn)
 {
 	std::string fileOption;
-	std::cout << "\n\nArchivo:\n";
+	std::cout << "Archivo:\n";
 	std::cout << "1: Acerca de\n";
 	std::cout << "2: Salir\n";
 	std::cout << "\nOpcion: ";
@@ -43,10 +45,9 @@ std::string file(bool* newIsMenuOn)
 	return "\n\nOpcion invalida\n\n";
 }
 
-
 void executeOption(std::string newMenuOption)
 {
-
+	
 }
 
 void mainMenu()
@@ -65,6 +66,7 @@ void mainMenu()
 		executeOption(menuOption);
 		if (menuOption == "1")
 		{
+			system("cls");
 			std::cout << file(&isMenuOn);
 		}
 	}

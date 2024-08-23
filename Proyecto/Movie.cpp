@@ -6,10 +6,10 @@ Movie::Movie()
 	movieCountry = ' ';
 	movieYear = 0;
 	movieLength = 0;
-	movieReview = 0;
+	movieReview = 0.0;
 }
 Movie::Movie(std::string aMovieName, std::string aMovieCountry,
-	int aMovieYear, int aMovieLength, int aMovieReview)
+	int aMovieYear, int aMovieLength, float aMovieReview)
 {
 	this->movieName = aMovieName;
 	this->movieCountry = aMovieCountry;
@@ -34,7 +34,7 @@ void Movie::setMovieLength(int aMovieLength)
 {
 	this->movieLength = aMovieLength;
 }
-void Movie::setMovieReview(int aMovieReview)
+void Movie::setMovieReview(float aMovieReview)
 {
 	this->movieReview = aMovieReview;
 }
@@ -55,7 +55,7 @@ int Movie::getMovieLength()
 {
 	return this->movieLength;
 }
-int Movie::getMovieReview()
+float Movie::getMovieReview()
 {
 	return this->movieReview;
 }

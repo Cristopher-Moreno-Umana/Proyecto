@@ -3,14 +3,14 @@
 Room::Room()
 {
 	roomNumber = 0;
-	numberSeats = 0;
 	seatPrice = 0.0;
+	numberSeats = 10 * 10;
 }
-Room::Room(int aRoomNumber, int aNumberSeats, double aSeatPrice)
+Room::Room(int aRoomNumber,double aSeatPrice, int aNumberSeats)
 {
 	this->roomNumber = aRoomNumber;
-	this->numberSeats = aNumberSeats;
 	this->seatPrice = aSeatPrice;
+	this->numberSeats = aNumberSeats;
 }
 
 void Room::setRoomNumber(int aRoomNumber)

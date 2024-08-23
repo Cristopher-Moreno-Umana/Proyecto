@@ -7,11 +7,9 @@ private:
 	int roomNumber;
 	int numberSeats;
 	double seatPrice;
-
 public:
 	Room();
-	Room(int aRoomNumber, int aNumberSeats, double aSeatPrice);
-
+	Room(int aRoomNumber, double aSeatPrice, int aNumberSeats);
 	void setRoomNumber(int aRoomNumber);
 	void setNumberSeats(int aNumberSeats);
 	void setSeatPrice(double aSeatPrice);
@@ -19,5 +17,6 @@ public:
 	int getRoomNumber();
 	int getNumberSeats();
 	double getSeatPrice();
+	
 };
 #endif
