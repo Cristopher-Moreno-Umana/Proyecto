@@ -127,14 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="definition_of_all_funtions.cpp" />
+    <ClCompile Include="seat.cpp" />
+    <ClCompile Include="definition_of_all_functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="movie.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="schedule.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="declaration_of_all_funtions.h" />
+    <ClInclude Include="seat.h" />
+    <ClInclude Include="declaration_of_all_functions.h" />
     <ClInclude Include="movie.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="schedule.h" />

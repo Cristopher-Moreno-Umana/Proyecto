@@ -1,4 +1,4 @@
-#include "Movie.h"
+#include "movie.h"
 
 Movie::Movie()
 {
@@ -9,7 +9,7 @@ Movie::Movie()
 	movieReview = 0.0;
 }
 Movie::Movie(std::string aMovieName, std::string aMovieCountry,
-	int aMovieYear, int aMovieLength, float aMovieReview)
+	int aMovieYear, int aMovieLength, double aMovieReview)
 {
 	this->movieName = aMovieName;
 	this->movieCountry = aMovieCountry;
@@ -34,7 +34,7 @@ void Movie::setMovieLength(int aMovieLength)
 {
 	this->movieLength = aMovieLength;
 }
-void Movie::setMovieReview(float aMovieReview)
+void Movie::setMovieReview(double aMovieReview)
 {
 	this->movieReview = aMovieReview;
 }
@@ -55,7 +55,7 @@ int Movie::getMovieLength()
 {
 	return this->movieLength;
 }
-float Movie::getMovieReview()
+double Movie::getMovieReview()
 {
 	return this->movieReview;
 }

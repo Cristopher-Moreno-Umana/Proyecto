@@ -1,5 +1,5 @@
-#ifndef Header_h
-#define Header_h
+#ifndef declaration_of_all_functions_h
+#define declaration_of_all_functions_h
 
 void mainMenu();
 
@@ -17,12 +17,13 @@ int convertMinutesToHours(int newMinutesToconvert);
 
 int remainingMinutes(int newMinutesToconvert);
 
-void moviesSchedule(Movie newMovieList[], Room newRoomList[],
-	Schedule newScheduleData[]);
+void moviesSchedule(Movie newMovieList[], Schedule newScheduleData[]);
 
 void maintenance(Movie newMovieList[], Room newRoomList[],
 	Schedule newScheduleData[]);
 
-void roomsData(Movie newMovieList[], Room newRoomList[]);
+void roomsData(Room newRoomList[]);
+
+void dataInSystem(Movie newMovieList[], Room newRoomList[], Schedule newScheduleData[]);
 
 #endif 

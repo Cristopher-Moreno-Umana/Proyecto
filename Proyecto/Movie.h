@@ -1,6 +1,6 @@
 #include <iostream>
-#ifndef Movie_h
-#define Movie_h
+#ifndef movie_h
+#define movie_h
 
 class Movie
 {
@@ -9,23 +9,23 @@ private:
 	std::string movieCountry;
 	int movieYear;
 	int movieLength;
-	float movieReview;
+	double movieReview;
 
 public:
 	Movie();
 	Movie(std::string aMovieName, std::string aMovieCountry,
-		int aMovieYear, int aMovieLength, float aMovieReview);
+		int aMovieYear, int aMovieLength, double aMovieReview);
 
 	void setMovieName(std::string aMovieName);
 	void setMovieCountry(std::string aMovieCountry);
 	void setMovieYear(int aMovieYear);
 	void setMovieLength(int aMovieLength);
-	void setMovieReview(float aMovieReview);
+	void setMovieReview(double aMovieReview);
 
 	std::string getMovieName();
 	std::string getMovieCountry();
 	int getMovieYear();
 	int getMovieLength();
-	float getMovieReview();
+	double getMovieReview();
 };
 #endif

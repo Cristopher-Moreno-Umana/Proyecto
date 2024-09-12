@@ -1,15 +1,15 @@
-#include "Room.h"
+#include "room.h"
 
 Room::Room()
 {
 	roomNumber = 0;
-	seatPrice = 0.0;
+	ticketPrice = 0.0;
 	numberSeats = 10 * 10;
 }
-Room::Room(int aRoomNumber,double aSeatPrice, int aNumberSeats)
+Room::Room(int aRoomNumber,double aTicketPrice, int aNumberSeats)
 {
 	this->roomNumber = aRoomNumber;
-	this->seatPrice = aSeatPrice;
+	this->ticketPrice = aTicketPrice;
 	this->numberSeats = aNumberSeats;
 }
 
@@ -21,9 +21,9 @@ void Room::setNumberSeats(int aNumberSeats)
 {
 	this->numberSeats = aNumberSeats;
 }
-void Room::setSeatPrice(double aSeatPrice)
+void Room::setTicketPrice(double aTicketPrice)
 {
-	this->seatPrice = aSeatPrice;
+	this->ticketPrice = aTicketPrice;
 }
 
 int Room::getRoomNumber()
@@ -34,7 +34,7 @@ int Room::getNumberSeats()
 {
 	return this->numberSeats;
 }
-double Room::getSeatPrice()
+double Room::getTicketPrice()
 {
-	return this->seatPrice;
+	return this->ticketPrice;
 }

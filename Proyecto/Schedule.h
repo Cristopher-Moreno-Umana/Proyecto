@@ -1,6 +1,6 @@
 #include <iostream>
-#ifndef Schedule_h
-#define Schedule_h
+#ifndef schedule_h
+#define schedule_h
 class Schedule
 {
 private:
