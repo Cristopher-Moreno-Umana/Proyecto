@@ -19,9 +19,7 @@ public:
 
 	void printScheduleData();
 
-	int convertMinuteInHours(int aMinutesToConvert);
 
-	int remainingMinutes(int aRemainingMinutes);
 };
 #endif
 

@@ -21,5 +21,9 @@ public:
 	int getHourMovieEnds();
 	int getMinuteMovieStarts();
 	int getMinuteMovieEnds();
+
+	void convertMinuteInHours(int aMinutesToConvert);
+
+	void remainingMinutes(int aRemainingMinutes);
 };
 #endif

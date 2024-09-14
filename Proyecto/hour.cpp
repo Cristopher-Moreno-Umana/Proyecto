@@ -55,3 +55,19 @@ int Hour::getMinuteMovieEnds()
 {
 	return this->minuteMovieEnds;
 }
+
+void Hour::convertMinuteInHours(int aMinutesToConvert)
+{
+	int totalHours;
+	int const TOTALMINUTESPERHOUR = 60;
+	totalHours = aMinutesToConvert / TOTALMINUTESPERHOUR;
+	this->hourMovieEnds = hourMovieStarts + totalHours;
+}
+
+void Hour::remainingMinutes(int aRemainingMinutes)
+{
+	int totalMinutes;
+	int const TOTALMINUTESPERHOUR = 60;
+	totalMinutes = aRemainingMinutes % TOTALMINUTESPERHOUR;
+	this->minuteMovieEnds = minuteMovieStarts + totalMinutes;
+}
