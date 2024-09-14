@@ -127,16 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="client.cpp" />
+    <ClCompile Include="hour.cpp" />
     <ClCompile Include="seat.cpp" />
-    <ClCompile Include="definition_of_all_functions.cpp" />
+    <ClCompile Include="definition_of_project_functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="movie.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="schedule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="client.h" />
+    <ClInclude Include="libraries_of_the_project.h" />
+    <ClInclude Include="hour.h" />
     <ClInclude Include="seat.h" />
-    <ClInclude Include="declaration_of_all_functions.h" />
+    <ClInclude Include="declaration_of_project_functions.h" />
     <ClInclude Include="movie.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="schedule.h" />

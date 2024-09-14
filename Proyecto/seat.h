@@ -1,19 +1,22 @@
 #ifndef seat_h
 #define seat_h
-#include <iostream>
+#include "libraries_of_the_project.h"
 class Seat
 {
 private:
-	std::string seatID;
+	string seatID;
 	int seatCondition;
 public:
 	Seat();
-	Seat(std::string aSeatID, int aSeatCondition);
+	Seat(string aSeatID, int aSeatCondition);
 
-	void setSeatID(std::string aSeatID);
+	void setSeatID(string aSeatID);
 	void setSeatCondition(int aSeatCondition);
 
-	std::string getSeatID();
+	string getSeatID();
 	int getSeatCondition();
+
+	void printSeatsID();
+	void printSeatsCondition();
 };
 #endif 

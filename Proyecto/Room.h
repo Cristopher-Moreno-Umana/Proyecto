@@ -4,18 +4,16 @@ class Room
 {
 private:
 	int roomNumber;
-	int numberSeats;
-	double ticketPrice;
+	int totalOfSeats;
 public:
+
 	Room();
-	Room(int aRoomNumber, double aTicketPrice, int aNumberSeats);
+	Room(int aRoomNumber, int aTotalOfSeats);
+
 	void setRoomNumber(int aRoomNumber);
-	void setNumberSeats(int aNumberSeats);
-	void setTicketPrice(double aTicketPrice);
+	void setTotalOfSeats(int aTotalOfSeats);
 
 	int getRoomNumber();
-	int getNumberSeats();
-	double getTicketPrice();
-	
+	int getTotalOfSeats();
 };
 #endif

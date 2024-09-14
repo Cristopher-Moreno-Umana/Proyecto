@@ -3,38 +3,31 @@
 Room::Room()
 {
 	roomNumber = 0;
-	ticketPrice = 0.0;
-	numberSeats = 10 * 10;
+	totalOfSeats = 0;
 }
-Room::Room(int aRoomNumber,double aTicketPrice, int aNumberSeats)
+
+Room::Room(int aRoomNumber, int aTotalOfSeats)
 {
 	this->roomNumber = aRoomNumber;
-	this->ticketPrice = aTicketPrice;
-	this->numberSeats = aNumberSeats;
+	this->totalOfSeats = aTotalOfSeats;
 }
 
 void Room::setRoomNumber(int aRoomNumber)
 {
 	this->roomNumber = aRoomNumber;
 }
-void Room::setNumberSeats(int aNumberSeats)
+
+void Room::setTotalOfSeats(int aTotalOfSeats)
 {
-	this->numberSeats = aNumberSeats;
-}
-void Room::setTicketPrice(double aTicketPrice)
-{
-	this->ticketPrice = aTicketPrice;
+	this->totalOfSeats = aTotalOfSeats;
 }
 
 int Room::getRoomNumber()
 {
 	return this->roomNumber;
 }
-int Room::getNumberSeats()
+
+int Room::getTotalOfSeats()
 {
-	return this->numberSeats;
-}
-double Room::getTicketPrice()
-{
-	return this->ticketPrice;
+	return this->totalOfSeats;
 }

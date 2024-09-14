@@ -2,71 +2,41 @@
 
 Schedule::Schedule()
 {
-	hourMovieStarts = 0;
-	minuteMovieStarts = 0;
-	hourMovieEnds = 0;
-	minuteMovieEnds = 0;
 	emitDate = " ";
+	hourData = Hour::Hour(0, 0, 0, 0);
 }
 
-Schedule::Schedule(int anHourMovieStarts,int aMinuteMovieStarts, int anHourMovieEnds,
-	int aMinuteMovieEnds, std::string aEmitDate)
+Schedule::Schedule(string aEmitDate, Hour aHourData)
 {
-	this->hourMovieStarts = anHourMovieStarts;
-	this->minuteMovieStarts = aMinuteMovieStarts;
-	this->hourMovieEnds = anHourMovieEnds;
-	this->minuteMovieEnds = aMinuteMovieEnds;
 	this->emitDate = aEmitDate;
+	this->hourData = aHourData;
 }
 
-void Schedule::setHourMovieStarts(int anHourMovieStarts)
-{
-	this->hourMovieStarts = anHourMovieStarts;
-}
-
-void Schedule::setMinuteMovieStarts(int aMinuteMovieStarts)
-{
-	this->minuteMovieStarts = aMinuteMovieStarts;
-}
-
-void Schedule::setHourMovieEnds(int anHourMovieEnds)
-{
-	this->hourMovieEnds = anHourMovieEnds;
-}
-
-void Schedule::setMinuteMovieEnds(int aMinuteMovieEnds)
-{
-	this->minuteMovieEnds = aMinuteMovieEnds;
-}
-
-void Schedule::setEmitDate(std::string aEmitDate)
+void Schedule::setEmitData(string aEmitDate)
 {
 	this->emitDate = aEmitDate;
 }
 
-
-int Schedule::getHourMovieStarts()
+void Schedule::setHourData(Hour aHourData)
 {
-	return this->hourMovieStarts;
+	this->hourData = aHourData;
 }
 
-int Schedule::getMinuteMovieStarts()
-{
-	return this->minuteMovieStarts;
-}
-
-int Schedule::getHourMovieEnds()
-{
-	return this->hourMovieEnds;
-}
-
-int Schedule::getMinuteMovieEnds()
-{
-	return this->minuteMovieEnds;
-}
-
-std::string Schedule::getEmitDate()
+string Schedule::getEmitData()
 {
 	return this->emitDate;
 }
 
+Hour Schedule::getHourData()
+{
+	return this->hourData;
+}
+
+void Schedule::printScheduleData()
+{
+	cout << "\nHorario: " << emitDate;
+	cout << "  incia: " << hourData.getHourMovieStarts();
+	cout << ' ' << hourData.getMinuteMovieStarts();
+	cout << "  Termina: " << hourData.getHourMovieEnds();
+	cout << ' ' << hourData.getMinuteMovieEnds();
+}

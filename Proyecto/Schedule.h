@@ -1,31 +1,27 @@
-#include <iostream>
 #ifndef schedule_h
 #define schedule_h
+#include "libraries_of_the_project.h"
+#include "hour.h"
 class Schedule
 {
 private:
-	int hourMovieStarts;
-	int minuteMovieStarts;
-	int hourMovieEnds;
-	int minuteMovieEnds;
-	std::string emitDate;
+	string emitDate;
+	Hour hourData;
 public:
-	
 	Schedule();
-	Schedule(int anHourMovieStarts, int aMinuteMovieStarts,int anHourMovieEnds,
-		int aMinuteMovieEnds, std::string aEmitDate);
+	Schedule(string aEmitDate, Hour aHourData);
 
-	void setHourMovieStarts(int anHourMovieStarts);
-	void setMinuteMovieStarts(int aMinuteMovieStarts);
-	void setHourMovieEnds(int anHourMovieEnds);
-	void setMinuteMovieEnds(int aMinuteMovieEnds);
-	void setEmitDate(std::string aEmitDate);
+	void setEmitData(string aEmitDate);
+	void setHourData(Hour aHourData);
 
-	int getHourMovieStarts();
-	int getMinuteMovieStarts();
-	int getHourMovieEnds();
-	int getMinuteMovieEnds();
-	std::string getEmitDate();
+	string getEmitData();
+	Hour getHourData();
+
+	void printScheduleData();
+
+	int convertMinuteInHours(int aMinutesToConvert);
+
+	int remainingMinutes(int aRemainingMinutes);
 };
 #endif
 

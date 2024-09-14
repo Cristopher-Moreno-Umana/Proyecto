@@ -1,31 +1,37 @@
-#include <iostream>
 #ifndef movie_h
 #define movie_h
-
+#include "libraries_of_the_project.h"
 class Movie
 {
 private:
-	std::string movieName;
-	std::string movieCountry;
+	string movieName;
+	string movieCountry;
 	int movieYear;
 	int movieLength;
+	int emitRoom;
 	double movieReview;
-
+	double ticketPrice;
 public:
 	Movie();
-	Movie(std::string aMovieName, std::string aMovieCountry,
-		int aMovieYear, int aMovieLength, double aMovieReview);
+	Movie(string aMovieName, string aMovieCountry, int aMovieYear, int aMovieLength,
+		int aEmitRoom, double aMovieReview, double aTicketPrice);
 
-	void setMovieName(std::string aMovieName);
-	void setMovieCountry(std::string aMovieCountry);
+	void setMovieName(string aMovieName);
+	void setMovieCountry(string aMovieCountry);
 	void setMovieYear(int aMovieYear);
 	void setMovieLength(int aMovieLength);
+	void setEmitRoom(int aEmitRoom);
 	void setMovieReview(double aMovieReview);
+	void setTicketPrice(double aTicketPrice);
 
-	std::string getMovieName();
-	std::string getMovieCountry();
+	string getMovieName();
+	string getMovieCountry();
 	int getMovieYear();
 	int getMovieLength();
+	int getEmitRoom();
 	double getMovieReview();
+	double getTicketPrice();
+
+	void printMovieData();
 };
 #endif
