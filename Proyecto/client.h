@@ -12,6 +12,8 @@ public:
 	Client();
 	Client(string aCard, string anIDCard, double anAmountToPay, int aTicketID);
 
+	~Client();
+
 	void setCard(string aCard);
 	void setIDCard(string anIDCard);
 	void setAmountToPay(double anAmountToPay);

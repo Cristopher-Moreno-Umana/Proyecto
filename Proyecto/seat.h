@@ -10,6 +10,8 @@ public:
 	Seat();
 	Seat(string aSeatID, int aSeatCondition);
 
+	~Seat();
+
 	void setSeatID(string aSeatID);
 	void setSeatCondition(int aSeatCondition);
 

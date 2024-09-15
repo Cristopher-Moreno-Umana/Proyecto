@@ -127,8 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cinema.cpp" />
     <ClCompile Include="client.cpp" />
-    <ClCompile Include="hour.cpp" />
     <ClCompile Include="seat.cpp" />
     <ClCompile Include="definition_of_project_functions.cpp" />
     <ClCompile Include="main.cpp" />
@@ -137,9 +137,9 @@
     <ClCompile Include="schedule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cinema.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="libraries_of_the_project.h" />
-    <ClInclude Include="hour.h" />
     <ClInclude Include="seat.h" />
     <ClInclude Include="declaration_of_project_functions.h" />
     <ClInclude Include="movie.h" />

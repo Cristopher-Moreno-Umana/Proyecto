@@ -16,6 +16,10 @@ Client::Client(string aCard, string anIDCard, double anAmountToPay, int aTicketI
 	this->ticketID = aTicketID;
 }
 
+Client::~Client()
+{
+}
+
 void Client::setCard(string aCard)
 {
 	this->card = aCard;

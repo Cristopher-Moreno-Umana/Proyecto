@@ -12,6 +12,10 @@ Seat::Seat(string aSeatID, int aSeatCondition)
 	this->seatCondition = aSeatCondition;
 }
 
+Seat::~Seat()
+{
+}
+
 void Seat::setSeatID(string aSeatID)
 {
 	this->seatID = aSeatID;

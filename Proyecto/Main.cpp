@@ -1,12 +1,8 @@
-#include "movie.h"
-#include "room.h"
-#include "schedule.h"
-#include "seat.h"
 #include "declaration_of_project_functions.h"
 
 int main()
 {
-    srand(time(NULL));
+    system("color 0B");
     mainMenu();
     return 0;
 }

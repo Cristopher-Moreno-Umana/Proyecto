@@ -1,14 +1,16 @@
+#include "libraries_of_the_project.h"
+#include "declaration_of_project_functions.h"
+#include "cinema.h"
 #include "movie.h"
 #include "room.h"
 #include "schedule.h"
 #include "Seat.h"
-#include "declaration_of_project_functions.h"
 
 std::string validateMainMenuOption()
 {
 	std::string mainMenuOption;
 
-	std::cout << "Ingrese una opcion:\n\n";
+	std::cout << "\nIngrese una opcion:\n\n";
 	std::cout << "1: Archivo\n";
 	std::cout << "2: Mantenimiento\n";
 	std::cout << "3: Reserva\n";
@@ -59,14 +61,14 @@ void mainMenu()
 {
 	bool isMenuOn = true;
 	string validatedMainMenuOption;
-	//int arraysLength = decideArraysLength();
-	const int TEMPORARYLENGTH = 1;
-	Movie* moviesList;
-	moviesList = new Movie[TEMPORARYLENGTH];
-	Room* roomsList;
-	roomsList = new Room[TEMPORARYLENGTH];
-	Schedule* scheduleData;
-	scheduleData = new Schedule[TEMPORARYLENGTH];
+	int length;
+
+	cout << "Ingrese la cantidad de peliculas que usara: ";
+	cin >> length;
+
+	Cinema* cinemaData;
+	
+	cinemaData = new Cinema[length];
 
 	while (isMenuOn == true)
 	{
@@ -80,12 +82,12 @@ void mainMenu()
 		if (validatedMainMenuOption == "2")
 		{
 			system("cls");
-			maintenance(moviesList, roomsList, scheduleData);
+			maintenance(cinemaData, length);
 		}
 		if (validatedMainMenuOption == "3")
 		{
 			system("cls");
-
+			ticketReservation(cinemaData,length);
 		}
 		if (validatedMainMenuOption == "4")
 		{
@@ -95,33 +97,14 @@ void mainMenu()
 	}
 }
 
-int decideArraysLength()
-{
-	string typeOfData;
-	int arraysLength = 0;
-	cout << "Agregara datos?: ";
-	cout << "\n 1: Si" << "\n Cualquier otro caracter: No" << "\n\nRespuesta: ";
-	cin >> typeOfData;
-
-	if (typeOfData == "1")
-	{
-		cout << "\nIngrese la cantidad de peliculas que agregara: ";
-		cin >> arraysLength;
-		return arraysLength;
-	}
-	
-	return arraysLength += 6;
-}
-
-void moviesData(Movie* newMoviesList, int newArraysLength)
+void moviesData(Movie* newMovieData, int newLength)
 {
 	std::string movieName, movieCountry;
-	int movieYear, movieLength, emitRoom;
-	double movieReview, ticketPrice;
+	int movieYear, movieLength;
+	double movieReview;
 
-	//numberOfMovies = numberOfMoviesToAdd();
 	cin.ignore();
-	for (int i = 0; i < newArraysLength; i++)
+	for (int i = 0; i < newLength; i++)
 	{
 		cout << "\nIngrese el nombre de la pelicula: ";
 		getline(cin, movieName);
@@ -133,59 +116,56 @@ void moviesData(Movie* newMoviesList, int newArraysLength)
 		cin >> movieLength;
 		cout << "\nIngrese la calificacion de la pelicula: ";
 		cin >> movieReview;
-		cout << "\nTomando en cuenta la cantidad de salas:\n";
-		cout << "\nIngrese la sala en la cual se emitira la pelicula: ";
-		cin >> emitRoom;
-		cout << "\nIngrese el valor que tendra el boleto de la pelicula: ";
-		cin >> ticketPrice;
-		newMoviesList[i] = Movie(movieName, movieCountry, movieYear, movieLength, 
-			emitRoom, movieReview, ticketPrice);
-
-		system("cls");
-	}
+		newMovieData[i] = Movie(movieName, movieCountry, movieYear, movieLength,
+			movieReview);
+	}	
+	system("cls");
 }
 
-void roomsData(Room* newRoomList, int newArraysLength)
+void roomsData(Room* newRoomsData, int newLength)
 {
-	int roomNumber = 0;
-	int numberSeats;
+	int roomNumber = 0, numberOfSeats;
 	int const TOTALSEATSPERROOM = 10 * 10;
-	for (int i = 0; i < newArraysLength; i++)
+	double ticketPrice;
+	for (int i = 0; i < newLength; i++)
 	{
 		roomNumber++;
-		numberSeats = TOTALSEATSPERROOM;
-		newRoomList[i] = Room(roomNumber, numberSeats);
+		numberOfSeats = TOTALSEATSPERROOM;
+
+		cout << "\nIngrese el precio del boleto: ";
+		cin >> ticketPrice;
+
+		newRoomsData[i] = Room(roomNumber, numberOfSeats, ticketPrice);
 	}
-	cout << "\nLista de salas generada con exito.\n\n";
 }
 
-void moviesScheduleData(Movie* newMovieList, Schedule* newScheduleData, int newArraysLength)
+void moviesScheduleData(Movie* newMovieData, Schedule* newScheduleData, int newLength)
 {
 	int hourMovieStarts, minuteMoviestarts, hourMovieEnds = 0, minuteMovieEnds = 0;
-	int minutesToconvert;
+	int minutesToconvert = 0, i = 0;
+
 	std::string emitDate;
-	Hour hourData;
-	std::cout << "\nEn formato DD/MM/AA:";
-	std::cout << "\nIngrese la fecha en la cual se emitiran las peliculas que ingresara: ";
-	std::cin >> emitDate;
 
-	for (int i = 0; i < newArraysLength; i++)
+	for (int i = 0; i < newLength; i++)
 	{
-		std::cout << "\n\nIngrese la hora en la que inicia la pelicula: ";
-		std::cin >> hourMovieStarts;
-		std::cout << "\nIngrese el minuto en el cual iniciara la pelicula: ";
-		std::cin >> minuteMoviestarts;
+		cout << "\nEn formato DD/MM/AA:";
+		cout << "\nIngrese la fecha en la cual se emitiran las peliculas que ingresara: ";
+		cin >> emitDate;
+		cout << "\n\nEn formato de 24h:";
+		cout << "\nIngrese la hora en la que iniciara la pelicula: ";
+		cin >> hourMovieStarts;
+		cout << "\n\nIngrese el minuto en el cual iniciara la pelicula: ";
+		cin >> minuteMoviestarts;
 
-		minutesToconvert = newMovieList[i].getMovieLength();
+		minutesToconvert = newMovieData[i].getMovieLength();
+	
+		newScheduleData[i] = Schedule(emitDate, hourMovieStarts, hourMovieEnds,
+			minuteMoviestarts, minuteMovieEnds);
 
-		hourData = Hour(hourMovieEnds, hourMovieEnds, minuteMoviestarts, minuteMovieEnds);
+		newScheduleData[i].convertMinutesInHours(minutesToconvert);
+		newScheduleData[i].remainingMinutes(minutesToconvert);
 
-		hourData.convertMinuteInHours(minutesToconvert);
-		hourData.remainingMinutes(minutesToconvert);
-
-		newScheduleData[i] = Schedule(emitDate, hourData);
 	}
-
 }
 
 string validateMaintenanceOption()
@@ -193,11 +173,11 @@ string validateMaintenanceOption()
 	string maintenanceMenuOption;
 
 	cout << "\nIngrese una opcion:";
-	cout << "\n\nAgregar informacion nueva:\n";
+	cout << "\n\nSi ingresara datos NO salga hasta ingresar los datos de las 3 areas\n";
 	cout << "\n1: Peliculas";
 	cout << "\n2: Salas";
 	cout << "\n3: Horarios";
-	cout << "\n\n4: Usar informacion guardada en el sistema";
+	cout << "\n4: Volver";
 	cout << "\n\nOpcion: ";
 	cin >> maintenanceMenuOption;
 
@@ -217,29 +197,60 @@ string validateMaintenanceOption()
 	return maintenanceMenuOption;
 }
 
-void maintenance(Movie* newMovieList, Room* newRoomList, Schedule* newScheduleData)
+void maintenance(Cinema* newCinemaData, int newLength)
 {
-	int arraysLength = decideArraysLength();
-	std::string validatedMaintenanceMenuOption = validateMaintenanceOption();
+	bool isMaintenanceMenuOn = true;
 
-	if (validatedMaintenanceMenuOption == "1")
+	std::string validatedMaintenanceMenuOption;
+
+	Movie* moviesFullData;
+	
+	moviesFullData = new Movie[newLength];
+
+	Room* roomsFullData;
+	
+	roomsFullData = new Room[newLength];
+
+	Schedule* scheduleFullData;
+
+	scheduleFullData = new Schedule[newLength];
+
+	while (isMaintenanceMenuOn == true)
 	{
-		moviesData(newMovieList,arraysLength);
+		validatedMaintenanceMenuOption = validateMaintenanceOption();
+
+		if (validatedMaintenanceMenuOption == "1")
+		{
+			moviesData(moviesFullData, newLength);
+		}
+
+		if (validatedMaintenanceMenuOption == "2")
+		{
+			roomsData(roomsFullData, newLength);
+			cout << "\nLista de salas generada con exito.\n\n";
+		}
+
+		if (validatedMaintenanceMenuOption == "3")
+		{
+			moviesScheduleData(moviesFullData, scheduleFullData, newLength);
+		}
+		if (validatedMaintenanceMenuOption == "4")
+		{
+			isMaintenanceMenuOn = false;
+		}
+		for (int i = 0; i < newLength; i++)
+		{
+			newCinemaData[i] = Cinema(moviesFullData[i], roomsFullData[i], scheduleFullData[i]);
+		}
 	}
+}
 
-	if (validatedMaintenanceMenuOption == "2")
+void ticketReservation(Cinema* newCinemaData, int newLength)
+{
+	for (int i = 0; i < newLength; i++)
 	{
-		roomsData(newRoomList, arraysLength);
-	}
-
-	if (validatedMaintenanceMenuOption == "3")
-	{
-		moviesScheduleData(newMovieList, newScheduleData, arraysLength);
-	}
-
-	if (validatedMaintenanceMenuOption == "4")
-	{
-		//dataInSystem(newMovieList, newRoomList, newScheduleData);
+		newCinemaData[i].getMoviesList().printMovieData();
+		newCinemaData[i].getMoviesScheduleList().printScheduleData();
 	}
 }
 

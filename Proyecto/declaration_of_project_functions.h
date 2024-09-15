@@ -1,6 +1,10 @@
 #ifndef declaration_of_all_functions_h
 #define declaration_of_all_functions_h
 #include "libraries_of_the_project.h"
+#include "movie.h"
+#include "room.h"
+#include "schedule.h"
+#include "cinema.h"
 
 void mainMenu();
 
@@ -8,16 +12,15 @@ string validateMainMenuOption();
 
 string file(bool* newIsMenuOn);
 
-int decideArraysLength();
+void moviesData(Movie* newMovieData, int newLength);
 
-void moviesData(Movie* newMoviesList, int newArraysLength);
+void roomsData(Room* newRoomsData, int newLength);
 
-void roomsData(Room* newRoomList, int newArraysLength);
-
-void moviesScheduleData(Movie* newMovieList, Schedule* newScheduleData, int newArraysLength);
+void moviesScheduleData(Movie* newMovieData, Schedule* newScheduleData, int newLength);
 
 string validateMaintenanceOption();
 
-void maintenance(Movie* newMovieList, Room* newRoomList, Schedule* newScheduleData);
+void maintenance(Cinema* newCinemaData, int newLength);
 
+void ticketReservation(Cinema* newCinemaData, int newLength);
 #endif 

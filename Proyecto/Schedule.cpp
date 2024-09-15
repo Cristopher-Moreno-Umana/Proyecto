@@ -3,13 +3,24 @@
 Schedule::Schedule()
 {
 	emitDate = " ";
-	hourData = Hour::Hour(0, 0, 0, 0);
+	hourMovieStarts = 0;
+	hourMovieEnds = 0;
+	minuteMovieStarts = 0;
+	minuteMovieEnds = 0;
 }
 
-Schedule::Schedule(string aEmitDate, Hour aHourData)
+Schedule::Schedule(string aEmitDate, int aHourMovieStarts,
+	int aHourMovieEnds, int aMinuteMovieStarts, int aMinuteMovieEnds)
 {
 	this->emitDate = aEmitDate;
-	this->hourData = aHourData;
+	this->hourMovieStarts = aHourMovieStarts;
+	this->hourMovieEnds = aHourMovieEnds;
+	this->minuteMovieStarts = aMinuteMovieStarts;
+	this->minuteMovieEnds = aMinuteMovieEnds;
+}
+
+Schedule::~Schedule()
+{
 }
 
 void Schedule::setEmitData(string aEmitDate)
@@ -17,9 +28,44 @@ void Schedule::setEmitData(string aEmitDate)
 	this->emitDate = aEmitDate;
 }
 
-void Schedule::setHourData(Hour aHourData)
+void Schedule::setHourMovieStarts(int aHourMovieStarts)
 {
-	this->hourData = aHourData;
+	this->hourMovieStarts = aHourMovieStarts;
+}
+
+void Schedule::setHourMovieEnds(int aHourMovieEnds)
+{
+	this->hourMovieEnds = aHourMovieEnds;
+}
+
+void Schedule::setMinuteMovieStarts(int aMinuteMovieStarts)
+{
+	this->minuteMovieStarts = aMinuteMovieStarts;
+}
+
+void Schedule::setMinuteMovieEnds(int aMinuteMovieEnds)
+{
+	this->minuteMovieStarts = aMinuteMovieEnds;
+}
+
+int Schedule::getHourMovieStarts()
+{
+	return this->hourMovieStarts;
+}
+
+int Schedule::getHourMovieEnds()
+{
+	return this->hourMovieEnds;
+}
+
+int Schedule::getMinuteMovieStarts()
+{
+	return this->minuteMovieStarts;
+}
+
+int Schedule::getMinuteMovieEnds()
+{
+	return this->minuteMovieEnds;
 }
 
 string Schedule::getEmitData()
@@ -27,16 +73,28 @@ string Schedule::getEmitData()
 	return this->emitDate;
 }
 
-Hour Schedule::getHourData()
+void Schedule::convertMinutesInHours(int newMinutesToConvert)
 {
-	return this->hourData;
+	int totalHours;
+	int const TOTALMINUTESPERHOUR = 60;
+	totalHours = newMinutesToConvert / TOTALMINUTESPERHOUR;
+	this->hourMovieEnds = hourMovieStarts + totalHours;
+}
+
+void Schedule::remainingMinutes(int newRemainingMinutes)
+{
+	int totalMinutes;
+	int const TOTALMINUTESPERHOUR = 60;
+	totalMinutes = newRemainingMinutes % TOTALMINUTESPERHOUR;
+	this->minuteMovieEnds = minuteMovieStarts + totalMinutes;
 }
 
 void Schedule::printScheduleData()
 {
 	cout << "\nHorario: " << emitDate;
-	cout << "  incia: " << hourData.getHourMovieStarts();
-	cout << ' ' << hourData.getMinuteMovieStarts();
-	cout << "  Termina: " << hourData.getHourMovieEnds();
-	cout << ' ' << hourData.getMinuteMovieEnds();
+	cout << "\nincia: " << hourMovieStarts;
+	cout << ':' << minuteMovieStarts;
+	cout << "\nTermina: " << hourMovieEnds;
+	cout << ':' << minuteMovieEnds;
+	cout << "\n\n";
 }
