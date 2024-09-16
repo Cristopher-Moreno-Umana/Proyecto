@@ -4,7 +4,9 @@
 #include "movie.h"
 #include "room.h"
 #include "schedule.h"
-#include "Seat.h"
+#include "seatsList.h"
+#include "bill.h"
+#include "client.h"
 
 std::string validateMainMenuOption()
 {
@@ -62,6 +64,7 @@ void mainMenu()
 	bool isMenuOn = true;
 	string validatedMainMenuOption;
 	int length;
+	Bill clientBill;
 
 	cout << "Ingrese la cantidad de peliculas que usara: ";
 	cin >> length;
@@ -87,7 +90,7 @@ void mainMenu()
 		if (validatedMainMenuOption == "3")
 		{
 			system("cls");
-			ticketReservation(cinemaData,length);
+			ticketReservation(cinemaData,length,clientBill);
 		}
 		if (validatedMainMenuOption == "4")
 		{
@@ -243,14 +246,50 @@ void maintenance(Cinema* newCinemaData, int newLength)
 			newCinemaData[i] = Cinema(moviesFullData[i], roomsFullData[i], scheduleFullData[i]);
 		}
 	}
+
+	delete[] moviesFullData;
+	delete[] roomsFullData;
+	delete[] scheduleFullData;
 }
 
-void ticketReservation(Cinema* newCinemaData, int newLength)
+void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill)
 {
+	int countOfMovies = 1, movieReservationNumber, numberOfTickets = 1;
+	double mountToPay;
+	string ticketID;
+	SeatsList seatsMatrix;
+
 	for (int i = 0; i < newLength; i++)
 	{
+		cout <<"\nNumero de pelicula: " << countOfMovies << '\n';
 		newCinemaData[i].getMoviesList().printMovieData();
+		newCinemaData[i].getRoomsList().printRoomData();
 		newCinemaData[i].getMoviesScheduleList().printScheduleData();
+		countOfMovies++;
 	}
+	cout << "\nIngrese el numero de pelicula en la cual se hara la reserva: ";
+	cout << "\n\nNumero: ";
+	cin >> movieReservationNumber;
+	cout << "\nIngrese la cantidad de boletos que reservara: ";
+	cin >> numberOfTickets;
+
+	seatsMatrix.fillSeatsMatrix();
+	seatsMatrix.printSeatsMatrixConditionAndID();
+
+	mountToPay = newCinemaData[movieReservationNumber - 1].getRoomsList().getAticketPrice();
+
+	mountToPay *= numberOfTickets;
+
+	aClientBill = Bill(mountToPay);
+	aClientBill.buildTicketID();
+	aClientBill.printBillID();
+
+	cout << "\n\nEl cliente pagara un total de: " << mountToPay;
+	cout << " por un total de: " << numberOfTickets << " boletos";
+}
+
+void ticketSale(Bill aClientBill)
+{
+	
 }
 

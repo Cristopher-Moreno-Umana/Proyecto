@@ -4,21 +4,17 @@
 class Seat
 {
 private:
-	string seatID;
-	int seatCondition;
+	string seatID, seatCondition, seatConditionAndID;
 public:
 	Seat();
-	Seat(string aSeatID, int aSeatCondition);
-
-	~Seat();
+	Seat(std::string aSeatID, string aSeatCondition);
 
 	void setSeatID(string aSeatID);
-	void setSeatCondition(int aSeatCondition);
+	void setSeatCondition(string aSeatCondition);
 
 	string getSeatID();
-	int getSeatCondition();
+	string getSeatCondition();
+	string getSeatConditionAndID();
 
-	void printSeatsID();
-	void printSeatsCondition();
 };
 #endif 

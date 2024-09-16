@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bill.cpp" />
     <ClCompile Include="cinema.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="seat.cpp" />
@@ -135,8 +136,10 @@
     <ClCompile Include="movie.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="schedule.cpp" />
+    <ClCompile Include="seatsList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bill.h" />
     <ClInclude Include="cinema.h" />
     <ClInclude Include="client.h" />
     <ClInclude Include="libraries_of_the_project.h" />
@@ -145,6 +148,7 @@
     <ClInclude Include="movie.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="schedule.h" />
+    <ClInclude Include="seatsList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

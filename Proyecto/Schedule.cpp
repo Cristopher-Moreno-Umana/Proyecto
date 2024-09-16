@@ -76,9 +76,18 @@ string Schedule::getEmitData()
 void Schedule::convertMinutesInHours(int newMinutesToConvert)
 {
 	int totalHours;
-	int const TOTALMINUTESPERHOUR = 60;
+	int const TOTALMINUTESPERHOUR = 60, TOTALHOURSPERDAY = 24;
 	totalHours = newMinutesToConvert / TOTALMINUTESPERHOUR;
 	this->hourMovieEnds = hourMovieStarts + totalHours;
+
+	if (hourMovieEnds >= TOTALHOURSPERDAY || hourMovieStarts >= TOTALHOURSPERDAY)
+	{
+		cout << "\nIngreso una hora no valida.";
+		cout << "\nAl salir ingrese nuevamente la hora.";
+		cout << '\n';
+		system("pause");
+		cout << '\n';
+	}
 }
 
 void Schedule::remainingMinutes(int newRemainingMinutes)
@@ -87,6 +96,12 @@ void Schedule::remainingMinutes(int newRemainingMinutes)
 	int const TOTALMINUTESPERHOUR = 60;
 	totalMinutes = newRemainingMinutes % TOTALMINUTESPERHOUR;
 	this->minuteMovieEnds = minuteMovieStarts + totalMinutes;
+
+	while (minuteMovieEnds >= TOTALMINUTESPERHOUR)
+	{
+		this->minuteMovieEnds -= TOTALMINUTESPERHOUR;
+		this->hourMovieEnds++;
+	}
 }
 
 void Schedule::printScheduleData()

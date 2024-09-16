@@ -1,5 +1,6 @@
 #ifndef room_h
 #define room_h
+#include "libraries_of_the_project.h"
 class Room
 {
 private:
@@ -19,5 +20,7 @@ public:
 	int getRoomNumber();
 	int getTotalOfSeats();
 	double getAticketPrice();
+
+	void printRoomData();
 };
 #endif

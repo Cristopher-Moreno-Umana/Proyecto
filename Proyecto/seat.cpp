@@ -2,48 +2,40 @@
 
 Seat::Seat()
 {
+	seatCondition = " ";
 	seatID = " ";
-	seatCondition = 0;
+	seatConditionAndID = " ";
 }
 
-Seat::Seat(string aSeatID, int aSeatCondition)
+Seat::Seat(string aSeatID, string aSeatCondition)
 {
 	this->seatID = aSeatID;
 	this->seatCondition = aSeatCondition;
+	this->seatConditionAndID = seatID;
+	this->seatConditionAndID += ('-' + seatCondition);
 }
 
-Seat::~Seat()
-{
-}
-
-void Seat::setSeatID(string aSeatID)
+void Seat::setSeatID(std::string aSeatID)
 {
 	this->seatID = aSeatID;
 }
 
-void Seat::setSeatCondition(int aSeatCondition)
+void Seat::setSeatCondition(string aSeatCondition)
 {
 	this->seatCondition = aSeatCondition;
 }
 
-string Seat::getSeatID()
+std::string Seat::getSeatID()
 {
 	return this->seatID;
 }
 
-int Seat::getSeatCondition()
+std::string Seat::getSeatCondition()
 {
 	return this->seatCondition;
 }
 
-void Seat::printSeatsID()
+string Seat::getSeatConditionAndID()
 {
-	cout << '\n' << seatID;
+	return this->seatConditionAndID;
 }
-
-void Seat::printSeatsCondition()
-{
-	cout << '\n' << seatCondition;
-}
-
-

@@ -5,7 +5,7 @@
 #include "room.h"
 #include "schedule.h"
 #include "cinema.h"
-
+#include "bill.h"
 void mainMenu();
 
 string validateMainMenuOption();
@@ -22,5 +22,7 @@ string validateMaintenanceOption();
 
 void maintenance(Cinema* newCinemaData, int newLength);
 
-void ticketReservation(Cinema* newCinemaData, int newLength);
+void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill);
+
+void ticketSale(Bill aClientBill);
 #endif 

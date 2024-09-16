@@ -47,3 +47,9 @@ double Room::getAticketPrice()
 {
 	return this->ticketPrice;
 }
+
+void Room::printRoomData()
+{
+	cout << "\nSala : " << this->roomNumber;
+	cout << "\nPrecio del boleto: " << this->ticketPrice;
+}

@@ -6,22 +6,19 @@ class Client
 private:
 	string card;
 	string idCard;
-	double amountToPay;
-	int ticketID;
+	
 public:
 	Client();
-	Client(string aCard, string anIDCard, double anAmountToPay, int aTicketID);
+	Client(string aCard, string anIDCard);
 
 	~Client();
 
 	void setCard(string aCard);
 	void setIDCard(string anIDCard);
-	void setAmountToPay(double anAmountToPay);
-	void setTickedID(int aTicketID);
+	
 
 	string getCard();
 	string getIDCard();
-	double getAmountToPay();
-	int getTickedID();
+
 };
 #endif
