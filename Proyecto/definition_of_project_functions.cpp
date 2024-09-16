@@ -95,7 +95,7 @@ void mainMenu()
 		if (validatedMainMenuOption == "4")
 		{
 			system("cls");
-
+			ticketSale(clientBill);
 		}
 	}
 }
@@ -252,12 +252,16 @@ void maintenance(Cinema* newCinemaData, int newLength)
 	delete[] scheduleFullData;
 }
 
-void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill)
+void ticketReservation(Cinema* newCinemaData, int newLength, Bill& aClientBill)
 {
 	int countOfMovies = 1, movieReservationNumber, numberOfTickets = 1;
 	double mountToPay;
-	string ticketID;
+	string ticketID = "M", seatID;
 	SeatsList seatsMatrix;
+
+	int numberOfTicketID = (rand() % 100) + 1;
+
+	ticketID += to_string(numberOfTicketID);
 
 	for (int i = 0; i < newLength; i++)
 	{
@@ -276,12 +280,15 @@ void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill)
 	seatsMatrix.fillSeatsMatrix();
 	seatsMatrix.printSeatsMatrixConditionAndID();
 
+	cout << "\nIngrese el ID de la butaca para hacer la reservacion: ";
+	cin >> seatID;
+	seatsMatrix.changeSeatCondition(seatID);
+
 	mountToPay = newCinemaData[movieReservationNumber - 1].getRoomsList().getAticketPrice();
 
 	mountToPay *= numberOfTickets;
 
-	aClientBill = Bill(mountToPay);
-	aClientBill.buildTicketID();
+	aClientBill = Bill(mountToPay, ticketID);
 	aClientBill.printBillID();
 
 	cout << "\n\nEl cliente pagara un total de: " << mountToPay;
@@ -290,6 +297,23 @@ void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill)
 
 void ticketSale(Bill aClientBill)
 {
-	
+	Client verifyClientData;
+	string verifyBillID, clientIDCard, clientCard;
+
+	cout << "\nIngrese el ID de la factura: ";
+	cin >> verifyBillID;
+
+	if (verifyBillID == aClientBill.getTickedID())
+	{
+		cout << "\nIngrese el numero de cedula de el cliente: ";
+		cin >> clientIDCard;
+		cout << "\nIngrese el numero de tarjeta de el cliente: ";
+		cin >> clientCard;
+		cout << "\nPago realizado con exito";
+	}
+	else
+	{
+		cout << "\nEl numero de factura no existe";
+	}
 }
 

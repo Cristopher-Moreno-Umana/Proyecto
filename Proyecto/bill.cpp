@@ -6,9 +6,10 @@ Bill::Bill()
 	ticketID = " ";
 }
 
-Bill::Bill(double aMountToPay)
+Bill::Bill(double aMountToPay, string aTicketID)
 {
 	this->mountToPay = aMountToPay;
+	this->ticketID = aTicketID;
 }
 
 Bill::~Bill()
@@ -35,18 +36,11 @@ string Bill::getTickedID()
 	return this->ticketID;
 }
 
-void Bill::buildTicketID()
-{
-	string firstTicketIDLetter = "M";
-	int numberOfTicketID = (rand() % 100) + 1;
-
-	firstTicketIDLetter += to_string(numberOfTicketID);
-
-	this->ticketID = firstTicketIDLetter;
-}
-
 void Bill::printBillID()
 {
 	cout << "\nID del boleto: ";
 	cout << this->ticketID;
+	cout << '\n';
+	system("pause");
+	cout << '\n';
 }

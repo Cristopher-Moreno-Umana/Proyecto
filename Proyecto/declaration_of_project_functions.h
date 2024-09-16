@@ -22,7 +22,7 @@ string validateMaintenanceOption();
 
 void maintenance(Cinema* newCinemaData, int newLength);
 
-void ticketReservation(Cinema* newCinemaData, int newLength, Bill aClientBill);
+void ticketReservation(Cinema* newCinemaData, int newLength, Bill& aClientBill);
 
 void ticketSale(Bill aClientBill);
 #endif 

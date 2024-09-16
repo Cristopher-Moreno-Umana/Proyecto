@@ -8,7 +8,7 @@ private:
 	string ticketID;
 public:
 	Bill();
-	Bill(double aMountToPay);
+	Bill(double aMountToPay, string aTicketID);
 
 	~Bill();
 
@@ -17,8 +17,6 @@ public:
 
 	double getAmountToPay();
 	string getTickedID();
-
-	void buildTicketID();
 
 	void printBillID();
 };
